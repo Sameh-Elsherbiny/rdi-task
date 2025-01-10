@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  django_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: django_app:latest
+    container_name: django_app
+    volumes:
+      - /root/logs:/app/logs # Mount a directory for logs
+      - .:/app # Mount the project folder to the container
+      - /root/.env:/app/.env:ro # Mount .env file into the container with read-only permission
+    restart: always
+    environment:
+      - ENV_FILE=/app/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: rdi
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Amwr600&
+      MYSQL_ROOT_PASSWORD: Amwr600&
+    volumes:
+      - /root/db:/var/lib/mysql
+    restart: always
