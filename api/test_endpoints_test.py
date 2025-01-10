@@ -12,7 +12,7 @@ from PIL import Image as PILImage
 
 
 class FileUploadViewTests(APITestCase):
-    def tPILImageest_upload_image(self):
+    def test_upload_image(self):
         url = reverse("file-upload")
         image_data = "data:image/jpeg;base64," + base64.b64encode(
             b"test image data"
