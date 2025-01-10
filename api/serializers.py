@@ -52,12 +52,12 @@ class PdfSerializer(serializers.ModelSerializer):
 
 
 class ImageRotateSerializer(serializers.Serializer):
-    angel = serializers.IntegerField()
+    angle = serializers.IntegerField()
     image_id = serializers.IntegerField()
 
     def validate(self, data):
         print(data)
-        if "angel" in data or "image_id" in data:
+        if "angle" in data or "image_id" in data:
             if Image.objects.filter(id=data.get("image_id")).exists():
                 image = Image.objects.get(id=data.get("image_id"))
 

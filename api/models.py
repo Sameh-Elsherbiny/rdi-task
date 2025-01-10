@@ -1,5 +1,5 @@
 from django.db import models
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 
 
 class Image(models.Model):
